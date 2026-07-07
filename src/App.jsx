@@ -37,7 +37,7 @@ function HomePage() {
 
 export default function App() {
   return (
-    <BrowserRouter>
+    <BrowserRouter basename="/black-aura-store">
       <AuthProvider>
         <div className="min-h-screen bg-deep-charcoal text-cream-white overflow-x-hidden">
           <SupabaseSync />
