@@ -1,6 +1,5 @@
-import { useMemo } from 'react'
 import { motion } from 'framer-motion'
-import { getSiteContent } from '../data/siteContent'
+import { useSiteData } from '../context/SiteDataContext'
 
 function Stars({ count }) {
   return (
@@ -15,7 +14,7 @@ function Stars({ count }) {
 }
 
 export default function Testimonials() {
-  const content = useMemo(() => getSiteContent(), [])
+  const { siteContent: content } = useSiteData()
   const { testimonials } = content
 
   if (!testimonials || testimonials.length === 0) return null

@@ -121,7 +121,7 @@ export function resetSiteContent() {
   return deepMerge(defaultContent, {})
 }
 
-function deepMerge(base, override) {
+export function deepMerge(base, override) {
   const result = { ...base }
   for (const key of Object.keys(override)) {
     if (

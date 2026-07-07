@@ -1,6 +1,5 @@
-import { useMemo } from 'react'
 import { motion } from 'framer-motion'
-import { getSiteContent } from '../data/siteContent'
+import { useSiteData } from '../context/SiteDataContext'
 
 const fadeUp = {
   hidden: { opacity: 0, y: 40 },
@@ -12,7 +11,7 @@ const fadeUp = {
 }
 
 export default function Hero() {
-  const content = useMemo(() => getSiteContent(), [])
+  const { siteContent: content } = useSiteData()
   const hero = content.hero || {}
   const images = content.images || {}
   const hasBg = images.heroBg && String(images.heroBg).startsWith('data:image')
@@ -70,15 +69,11 @@ export default function Hero() {
       </div>
 
       {/* Scroll Indicator */}
-      <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 2, duration: 1 }}
-        className="absolute bottom-8 left-1/2 -translate-x-1/2"
-      >
-        <motion.div animate={{ y: [0, 8, 0] }} transition={{ repeat: Infinity, duration: 2, ease: 'easeInOut' }}
-          className="w-5 h-8 border border-soft-grey/30 rounded-full flex justify-center pt-2"
-        >
+      <div className="absolute bottom-8 left-1/2 -translate-x-1/2">
+        <div className="w-5 h-8 border border-soft-grey/30 rounded-full flex justify-center pt-2">
           <div className="w-1 h-2 bg-muted-rose rounded-full" />
-        </motion.div>
-      </motion.div>
+        </div>
+      </div>
     </section>
   )
 }

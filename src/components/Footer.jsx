@@ -1,8 +1,7 @@
-import { useMemo } from 'react'
-import { getSiteContent } from '../data/siteContent'
+import { useSiteData } from '../context/SiteDataContext'
 
 export default function Footer() {
-  const content = useMemo(() => getSiteContent(), [])
+  const { siteContent: content } = useSiteData()
   const social = content.social || {}
   const footer = content.footer || {}
 

@@ -1,12 +1,12 @@
-import { useState, useEffect, useMemo } from 'react'
+import { useState, useEffect } from 'react'
 import { useNavigate, useLocation, Link } from 'react-router-dom'
 import { motion, AnimatePresence } from 'framer-motion'
-import { getSiteContent } from '../data/siteContent'
+import { useSiteData } from '../context/SiteDataContext'
 
 const navLinks = ['Home', 'Collection', 'About', 'Order']
 
 export default function Navbar() {
-  const content = useMemo(() => getSiteContent(), [])
+  const { siteContent: content } = useSiteData()
   const navigate = useNavigate()
   const location = useLocation()
   const [scrolled, setScrolled] = useState(false)

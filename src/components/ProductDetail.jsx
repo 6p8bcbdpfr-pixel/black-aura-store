@@ -3,7 +3,7 @@ import { useParams, Link, useLocation } from 'react-router-dom'
 import { motion, AnimatePresence } from 'framer-motion'
 import { getProductBySlug } from '../data/products'
 import { GOVERNORATES, PAYMENT_METHODS, calcShipping } from '../data/egypt'
-import { getSiteContent } from '../data/siteContent'
+import { useSiteData } from '../context/SiteDataContext'
 import { submitOrder } from '../lib/db'
 import ProductImage, { isUploadedImage } from './ProductImage'
 
@@ -22,7 +22,8 @@ export default function ProductDetail() {
   const { slug } = useParams()
   const location = useLocation()
   const product = getProductBySlug(slug)
-  const settings = useMemo(() => getSiteContent(), [])
+  const { siteContent } = useSiteData()
+  const settings = siteContent
 
   const [activeImg, setActiveImg] = useState(0)
   const [selectedSize, setSelectedSize] = useState(null)

@@ -1,11 +1,8 @@
 import { useState, useRef, useMemo } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
-import { getProducts } from '../data/products'
 import { GOVERNORATES, PAYMENT_METHODS, calcShipping } from '../data/egypt'
-import { getSiteContent } from '../data/siteContent'
+import { useSiteData } from '../context/SiteDataContext'
 import { submitOrder } from '../lib/db'
-
-const allProducts = getProducts()
 
 const emptyForm = {
   name: '',
@@ -20,7 +17,8 @@ const emptyForm = {
 }
 
 export default function ContactOrder() {
-  const settings = useMemo(() => getSiteContent(), [])
+  const { products, siteContent } = useSiteData()
+  const settings = siteContent
   const [form, setForm] = useState(emptyForm)
   const [receipt, setReceipt] = useState(null)
   const [submitted, setSubmitted] = useState(false)
@@ -182,7 +180,7 @@ export default function ContactOrder() {
                   className="w-full px-4 py-3 bg-deep-charcoal border border-dark-border rounded-xl text-cream-white text-sm focus:outline-none focus:border-muted-rose/50 focus:ring-1 focus:ring-muted-rose/20 transition-all appearance-none"
                 >
                   <option value="">Select product *</option>
-                  {allProducts.map((p) => (
+                  {products.map((p) => (
                     <option key={p.id} value={p.name}>{p.name} — {p.price}</option>
                   ))}
                 </select>

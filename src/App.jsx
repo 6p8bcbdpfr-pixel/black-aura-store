@@ -1,5 +1,6 @@
 import { HashRouter, Routes, Route } from 'react-router-dom'
 import { AuthProvider } from './context/AuthContext'
+import { SiteDataProvider } from './context/SiteDataContext'
 import Navbar from './components/Navbar'
 import AnnouncementBar from './components/AnnouncementBar'
 import Hero from './components/Hero'
@@ -39,7 +40,8 @@ export default function App() {
   return (
     <HashRouter>
       <AuthProvider>
-        <div className="min-h-screen bg-deep-charcoal text-cream-white overflow-x-hidden">
+        <SiteDataProvider>
+        <div className="min-h-screen bg-deep-charcoal text-creamy-white overflow-x-hidden">
           <SupabaseSync />
           <Navbar />
           <main>
@@ -63,6 +65,7 @@ export default function App() {
           <BackToTop />
           <Footer />
         </div>
+        </SiteDataProvider>
       </AuthProvider>
     </HashRouter>
   )

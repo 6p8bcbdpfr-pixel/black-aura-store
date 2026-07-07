@@ -1,9 +1,9 @@
-import { useState, useMemo } from 'react'
+import { useState } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
-import { getSiteContent } from '../data/siteContent'
+import { useSiteData } from '../context/SiteDataContext'
 
 export default function AnnouncementBar() {
-  const content = useMemo(() => getSiteContent(), [])
+  const { siteContent: content } = useSiteData()
   const [dismissed, setDismissed] = useState(false)
 
   if (!content.announcement?.enabled || dismissed) return null

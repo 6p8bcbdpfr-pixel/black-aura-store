@@ -1,11 +1,7 @@
-import { useMemo } from 'react'
 import { Link } from 'react-router-dom'
 import { motion } from 'framer-motion'
-import { getProducts } from '../data/products'
-import { getSiteContent } from '../data/siteContent'
+import { useSiteData } from '../context/SiteDataContext'
 import ProductImage from './ProductImage'
-
-const products = getProducts()
 
 const container = {
   hidden: {},
@@ -22,7 +18,7 @@ const cardAnim = {
 }
 
 export default function FeaturedCollection() {
-  const content = useMemo(() => getSiteContent(), [])
+  const { products, siteContent: content } = useSiteData()
   const collection = content.collection || {}
 
   return (

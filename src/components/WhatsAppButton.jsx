@@ -1,8 +1,7 @@
-import { useMemo } from 'react'
-import { getSiteContent } from '../data/siteContent'
+import { useSiteData } from '../context/SiteDataContext'
 
 export default function WhatsAppButton() {
-  const content = useMemo(() => getSiteContent(), [])
+  const { siteContent: content } = useSiteData()
   const url = content.social?.whatsapp || 'https://wa.me/201001234567'
 
   return (

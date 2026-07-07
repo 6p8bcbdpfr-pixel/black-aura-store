@@ -1,11 +1,8 @@
 import { useState, useMemo } from 'react'
 import { Link } from 'react-router-dom'
 import { motion } from 'framer-motion'
-import { getProducts } from '../data/products'
-import { getSiteContent } from '../data/siteContent'
+import { useSiteData } from '../context/SiteDataContext'
 import ProductImage from './ProductImage'
-
-const allProducts = getProducts()
 
 const container = {
   hidden: {},
@@ -22,18 +19,18 @@ const cardAnim = {
 }
 
 export default function CollectionPage() {
-  const content = useMemo(() => getSiteContent(), [])
-  const { collection } = content
+  const { products, siteContent } = useSiteData()
+  const { collection } = siteContent
   const [search, setSearch] = useState('')
   const [activeCategory, setActiveCategory] = useState('All')
 
   const categories = useMemo(() => {
-    const cats = [...new Set(allProducts.map((p) => p.category))]
+    const cats = [...new Set(products.map((p) => p.category))]
     return ['All', ...cats]
   }, [])
 
   const filtered = useMemo(() => {
-    return allProducts.filter((p) => {
+    return products.filter((p) => {
       const matchSearch =
         !search ||
         p.name.toLowerCase().includes(search.toLowerCase()) ||

@@ -1,6 +1,5 @@
-import { useMemo } from 'react'
 import { motion } from 'framer-motion'
-import { getSiteContent } from '../data/siteContent'
+import { useSiteData } from '../context/SiteDataContext'
 
 const fadeIn = {
   hidden: { opacity: 0, y: 40 },
@@ -12,7 +11,7 @@ const fadeIn = {
 }
 
 export default function About() {
-  const content = useMemo(() => getSiteContent(), [])
+  const { siteContent: content } = useSiteData()
   const about = content.about || {}
   const images = content.images || {}
   const values = content.values || []
