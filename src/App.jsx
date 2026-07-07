@@ -1,4 +1,4 @@
-import { BrowserRouter, Routes, Route } from 'react-router-dom'
+import { HashRouter, Routes, Route } from 'react-router-dom'
 import { AuthProvider } from './context/AuthContext'
 import Navbar from './components/Navbar'
 import AnnouncementBar from './components/AnnouncementBar'
@@ -37,7 +37,7 @@ function HomePage() {
 
 export default function App() {
   return (
-    <BrowserRouter basename="/black-aura-store">
+    <HashRouter>
       <AuthProvider>
         <div className="min-h-screen bg-deep-charcoal text-cream-white overflow-x-hidden">
           <SupabaseSync />
@@ -64,6 +64,6 @@ export default function App() {
           <Footer />
         </div>
       </AuthProvider>
-    </BrowserRouter>
+    </HashRouter>
   )
 }
