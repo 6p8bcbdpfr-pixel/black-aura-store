@@ -2,7 +2,7 @@
   "name": "Black Aura",
   "short_name": "Black Aura",
   "description": "Premium handcrafted accessories",
-  "start_url": "/black-aura-store/",
+  "start_url": "/black-aura-store/#/admin",
   "display": "standalone",
   "background_color": "#121212",
   "theme_color": "#121212",
