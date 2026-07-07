@@ -23,7 +23,7 @@ const cardAnim = {
 
 export default function FeaturedCollection() {
   const content = useMemo(() => getSiteContent(), [])
-  const { collection } = content
+  const collection = content.collection || {}
 
   return (
     <section id="collection" className="relative py-24 lg:py-32 px-6">

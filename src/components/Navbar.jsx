@@ -19,7 +19,7 @@ export default function Navbar() {
   }, [])
 
   const isHome = location.pathname === '/'
-  const hasLogo = content.images.logo && content.images.logo.startsWith('data:image')
+  const hasLogo = content.images?.logo && String(content.images.logo).startsWith('data:image')
 
   const handleNav = (id) => {
     setMenuOpen(false)

@@ -13,8 +13,9 @@ const fadeUp = {
 
 export default function Hero() {
   const content = useMemo(() => getSiteContent(), [])
-  const { hero, images } = content
-  const hasBg = images.heroBg && images.heroBg.startsWith('data:image')
+  const hero = content.hero || {}
+  const images = content.images || {}
+  const hasBg = images.heroBg && String(images.heroBg).startsWith('data:image')
 
   return (
     <section

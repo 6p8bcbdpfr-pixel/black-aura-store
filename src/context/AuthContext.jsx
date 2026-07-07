@@ -10,8 +10,10 @@ export function AuthProvider({ children }) {
   const [loading, setLoading] = useState(true)
 
   useEffect(() => {
-    const stored = sessionStorage.getItem('ba_admin_auth')
-    if (stored === 'true') setIsAuthenticated(true)
+    try {
+      const stored = sessionStorage.getItem('ba_admin_auth')
+      if (stored === 'true') setIsAuthenticated(true)
+    } catch {}
     setLoading(false)
   }, [])
 

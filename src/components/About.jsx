@@ -13,7 +13,9 @@ const fadeIn = {
 
 export default function About() {
   const content = useMemo(() => getSiteContent(), [])
-  const { about, images, values } = content
+  const about = content.about || {}
+  const images = content.images || {}
+  const values = content.values || []
   const hasAboutImg = images.aboutImage && images.aboutImage.startsWith('data:image')
 
   return (

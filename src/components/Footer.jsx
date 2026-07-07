@@ -3,7 +3,8 @@ import { getSiteContent } from '../data/siteContent'
 
 export default function Footer() {
   const content = useMemo(() => getSiteContent(), [])
-  const { social, footer } = content
+  const social = content.social || {}
+  const footer = content.footer || {}
 
   const socialLinks = [
     { key: 'instagram', label: 'Ig' },
