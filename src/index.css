@@ -1,0 +1,55 @@
+@import "tailwindcss";
+
+/* ─── Custom Design Tokens ─── */
+/* Edit these values to change the brand palette globally */
+@theme {
+  --color-deep-charcoal: #121212;
+  --color-soft-grey-bg: #1E1E22;
+  --color-muted-rose: #D4A5A5;
+  --color-dusty-lavender: #B7B7C2;
+  --color-cream-white: #F5F5F5;
+  --color-soft-grey: #A0A0A0;
+  --color-dark-border: #2A2A30;
+
+  --font-sans: 'Inter', 'Montserrat', system-ui, sans-serif;
+  --font-heading: 'Montserrat', 'Inter', system-ui, sans-serif;
+}
+
+/* ─── Base Styles ─── */
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  font-family: var(--font-sans);
+  background-color: var(--color-deep-charcoal);
+  color: var(--color-cream-white);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* ─── Glass-Morphism Utility ─── */
+.glass {
+  background: rgba(18, 18, 18, 0.6);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+/* ─── Scrollbar Styling ─── */
+::-webkit-scrollbar {
+  width: 6px;
+}
+::-webkit-scrollbar-track {
+  background: var(--color-deep-charcoal);
+}
+::-webkit-scrollbar-thumb {
+  background: var(--color-dark-border);
+  border-radius: 3px;
+}
+
+/* ─── Input / Textarea Reset ─── */
+input, textarea, select, button {
+  font-family: inherit;
+}
